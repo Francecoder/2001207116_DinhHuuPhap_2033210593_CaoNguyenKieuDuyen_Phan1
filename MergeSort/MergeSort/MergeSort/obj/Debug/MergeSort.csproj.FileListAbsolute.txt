@@ -1,7 +1,0 @@
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\bin\Debug\MergeSort.exe.config
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\bin\Debug\MergeSort.exe
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\bin\Debug\MergeSort.pdb
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\obj\Debug\MergeSort.csproj.AssemblyReference.cache
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\obj\Debug\MergeSort.csproj.CoreCompileInputs.cache
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\obj\Debug\MergeSort.exe
-D:\2001207116_DinhHuuPhap_Phan1\MergeSort\MergeSort\MergeSort\obj\Debug\MergeSort.pdb

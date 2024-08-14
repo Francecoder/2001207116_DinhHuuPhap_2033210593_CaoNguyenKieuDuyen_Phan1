@@ -10,29 +10,62 @@ namespace BinarySearch
     {
         static void Main(string[] args)
         {
-
-           int[] arr = { 2, 3, 4, 10, 40,50,60 };
-           int n = arr.Length;
-           int x = 40;
-            Console.WriteLine("Cac phan tu ban dau cua mang la :");
-            for (int i=0;i<n;i++)
+            int choose = 1;
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("1. Tìm kiếm phần tử bất kỳ bằng tìm kiếm nhị phân dùng đệ quy");
+            Console.WriteLine("2. Tìm kiếm phần tử bất kỳ bằng tìm kiếm nhị phân KHÔNG dùng đệ quy");
+            do
             {
-                Console.Write(arr[i]);
-                Console.Write("\t");
-            }
-           Console.WriteLine("");
-           int result = binarySearch(arr, 0, n - 1, x);
+                Console.WriteLine("Mời thầy nhập bài toán cần giải quyết trong các bài trên và bấm 0 để kết thúc");
 
-           if (result == -1)
-                Console.WriteLine("Phan tu {0} khong ton tai trong mang", x);
-            else
-                Console.WriteLine("Phan tu {0} duoc tim thay o vi tri {1} cua mang", x, result);
-
+                choose = Convert.ToInt32(Console.ReadLine());
+                luachon(choose);
+            } while (choose != 0);
             Console.ReadKey();
 
-
         }
-        static int binarySearch(int[] arr, int l, int r, int x)//Binary Search Chi Nen Ap Dung cho Mang Tang Hoac Giam, Hon loan se ko hieu qua!
+        public static void luachon(int choose)
+        {
+            int[] arr = { 21, 12, 33, 44, 22, 66 };
+            Console.WriteLine("Tất cả phần tử ban đầu của mảng là: ");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write($" {arr[i]}");
+            }
+            Console.WriteLine();
+            switch (choose)
+            {
+                case 1:
+                    int n = 6;// so luong phan tu cua mang
+                    Console.WriteLine("Nhập giá trị X muốn tìm:");
+                    int x = Convert.ToInt32(Console.ReadLine());
+                    int result = BinarySearch(arr, 0, n - 1, x);
+                    if (result == -1)
+                        Console.WriteLine("Element not present");
+                    else
+                        Console.WriteLine("Element found at index "
+                                          + result);
+                    Console.ReadKey();
+                    break;
+                case 2:
+                    Console.WriteLine("Nhập giá trị X muốn tìm:");
+                    int x5 = Convert.ToInt32(Console.ReadLine());
+                    int result5 = BinarySearchNoRecursive(arr, x5);
+
+                    if (result5 == -1)
+                        Console.WriteLine("Element not present");
+                    else
+                        Console.WriteLine("Element found at index "
+                                          + result5);
+                    Console.ReadKey();
+                    break;
+
+            }
+        }
+        //DeQuy
+        static int BinarySearch(int[] arr, int l, int r, int x)//Binary Search Chi Nen Ap Dung cho Mang Tang Hoac Giam, Hon loan se ko hieu qua!
         {
             if (r >= l)
             {
@@ -46,16 +79,41 @@ namespace BinarySearch
                 // If element is smaller than mid, then 
                 // it can only be present in left subarray 
                 if (arr[mid] > x)// Nam o phia truoc mang( gia tri giua>gia tri can tim)
-                    return binarySearch(arr, l, mid - 1, x);
+                    return BinarySearch(arr, l, mid - 1, x);
 
                 // Else the element can only be present 
                 // in right subarray 
                 //Nam o phia sau mang(gia tri giua < gia tri can tim)
-                return binarySearch(arr, mid + 1, r, x);
+                return BinarySearch(arr, mid + 1, r, x);
             }
 
             // We reach here when element is not present 
             // in array 
+            return -1;
+        }
+        //Khong de quy
+        static int BinarySearchNoRecursive(int[] arr, int x)
+        {
+            int left = 0, right = arr.Length - 1;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                // Check if x is present at mid
+                if (arr[mid] == x)
+                    return mid;
+
+                // If x greater, ignore left half
+                if (arr[mid] < x)
+                    left = mid + 1;
+
+                // If x is smaller, ignore right half
+                else
+                    right = mid - 1;
+            }
+
+            // if we reach here, then element was not present
             return -1;
         }
     }
